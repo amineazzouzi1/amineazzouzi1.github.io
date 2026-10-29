@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amine Azzouzi</title>
+<meta name="description" content="Portfolio d'Amine Azzouzi : ingénierie automobile, avionique et robotique, système embarqué.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: colonne unique type tableau de bord, nom en grand, puis liens, puis projets en liste. */
+:root {
+  --bg: #edf0f3;
+  --surface: #f8f9fb;
+  --fg: #101820;
+  --muted: #55626f;
+  --line: #cdd4db;
+  --accent: #c2410c;
+  --accent-fg: #ffffff;
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1318; --surface: #151d24; --fg: #e8edf1; --muted: #93a1ad;
+    --line: #26323c; --accent: #ffa94d; --accent-fg: #10161b; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1318; --surface: #151d24; --fg: #e8edf1; --muted: #93a1ad;
+  --line: #26323c; --accent: #ffa94d; --accent-fg: #10161b; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { color-scheme: light dark; }
+body {
+  margin: 0;
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-block: 40px 32px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+a { color: inherit; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.status { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+
+h1 {
+  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(56px, 15vw, 128px); line-height: .9; letter-spacing: -.005em;
+  margin: 20px 0 0; text-wrap: balance;
+}
+h1 span { color: var(--accent); display: block; }
+.field { margin-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+.field p { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: clamp(22px, 4.5vw, 30px); line-height: 1.2; max-width: 30ch; text-wrap: balance; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.chips li { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; border: 1px solid var(--line); padding: 4px 10px; border-radius: 3px; color: var(--muted); }
+
+.links { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 14px; text-decoration: none; padding: 12px 18px; border: 1px solid var(--fg); border-radius: 3px; }
+.btn svg { width: 18px; height: 18px; flex: none; fill: currentColor; }
+.btn:hover { background: var(--fg); color: var(--bg); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.btn.primary:hover { filter: brightness(1.08); background: var(--accent); color: var(--accent-fg); }
+
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 2px solid var(--fg); padding-bottom: 10px; margin-bottom: 8px; }
+h2 { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; font-size: 28px; letter-spacing: .03em; margin: 0; }
+.count { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+
+.project { display: grid; grid-template-columns: 1fr auto; gap: 8px 24px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.project > * { min-width: 0; }
+.project h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 5vw, 32px); line-height: 1.1; margin: 0; overflow-wrap: anywhere; }
+.project p { grid-column: 1; margin: 0; color: var(--muted); max-width: 62ch; }
+.project .chips { grid-column: 1; margin-top: 8px; }
+.project .open { grid-column: 2; grid-row: 1 / span 3; align-self: start; font-family: var(--font-mono); font-size: 13px; text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px; white-space: nowrap; }
+.project .open:hover { color: var(--accent); }
+.note { font-size: 14px; color: var(--muted); margin: 16px 0 0; }
+
+footer { border-top: 1px solid var(--line); padding-top: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+footer nav a { display: inline-flex; align-items: center; gap: 6px; }
+footer svg { width: 14px; height: 14px; fill: currentColor; }
+footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
+
+@media (max-width: 560px) {
+  .project { grid-template-columns: 1fr; }
+  .project .open { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 8px; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+  <symbol id="i-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol>
+</svg>
+<main class="wrap">
+  <header>
+    <div class="status"><span class="dot"></span>Portfolio · Étudiant ingénieur</div>
+    <h1>Amine <span>Azzouzi</span></h1>
+    <div class="field">
+      <p>Ingénierie Automobile, Avionique et Robotique</p>
+      <ul class="chips" aria-label="Spécialité">
+        <li>Système embarqué</li>
+        <li>Automobile</li>
+        <li>Avionique</li>
+        <li>Robotique</li>
+      </ul>
+    </div>
+  </header>
+
+  <section aria-labelledby="liens">
+    <div class="section-head"><h2 id="liens">Me retrouver</h2></div>
+    <div class="links" style="margin-top:20px">
+      <a class="btn primary" href="https://www.linkedin.com/in/amine-azzouzi-b7b850332" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg>LinkedIn →</a>
+      <a class="btn" href="https://github.com/Amine9119" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false"><use href="#i-github"/></svg>GitHub · Amine9119 →</a>
+    </div>
+  </section>
+
+  <section aria-labelledby="projets">
+    <div class="section-head">
+      <h2 id="projets">Projets GitHub</h2>
+      <span class="count">1 dépôt public</span>
+    </div>
+
+    <article class="project">
+      <h3>ADAS Automatic Emergency Braking System</h3>
+      <p>Conception et simulation d’un système ADAS de freinage automatique d’urgence (AEB) sous MATLAB/Simulink.</p>
+      <ul class="chips">
+        <li>ADAS</li>
+        <li>AEB</li>
+        <li>MATLAB</li>
+        <li>Simulink</li>
+      </ul>
+      <a class="open" href="https://github.com/Amine9119/ADAS-Automatic-Emergency-Braking-System" target="_blank" rel="noopener">Voir le code →</a>
+    </article>
+    <p class="note">D’autres projets apparaîtront ici au fur et à mesure de leur ajout sur GitHub.</p>
+  </section>
+
+  <footer>
+    <span>© 2026 Amine Azzouzi</span>
+    <nav>
+      <a href="https://www.linkedin.com/in/amine-azzouzi-b7b850332" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg>LinkedIn</a>
+      <a href="https://github.com/Amine9119" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false"><use href="#i-github"/></svg>GitHub</a>
+    </nav>
+  </footer>
+</main>
+</body>
+</html>
